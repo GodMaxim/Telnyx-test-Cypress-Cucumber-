@@ -9,6 +9,7 @@ class ProductsPage{
     }
 
     setSearchInput(text) {
+        this.searchInput.should('be.visible', { timeout: 30000 })
         this.searchInput.type(text, { delay: 1000 })
         this.searchInput.type('{enter}');
 }
