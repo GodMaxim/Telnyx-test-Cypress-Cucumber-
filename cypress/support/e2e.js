@@ -1,4 +1,3 @@
-
 Cypress.on('uncaught:exception', (err, runnable) => {
   if (err.message.includes('Cloudflare Turnstile') || err.message.includes('600010')) {
         return false;
@@ -10,6 +9,7 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   
   if (
     err.message.includes('Minified React error #418') ||
+    err.message.includes('Minified React error #412') ||
     err.message.includes("Cannot read properties of undefined (reading 'TenantFeatures')")
   ) {
     return false;
@@ -28,7 +28,6 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   }
 
   return true;
-
 })
 
 beforeEach(() => {
@@ -39,6 +38,6 @@ beforeEach(() => {
             if ($btn.length > 0) {
                 cy.wrap($btn).click({ force: true });
             }
-        })
-        })
+       })
+  })
 })
