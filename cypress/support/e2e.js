@@ -1,5 +1,5 @@
 
-Cypress.on('uncaught:exception', (err) => {
+Cypress.on('uncaught:exception', (err, runnable) => {
   if (err.message.includes('Cloudflare Turnstile') || err.message.includes('600010')) {
         return false;
     }
@@ -22,6 +22,12 @@ Cypress.on('uncaught:exception', (err) => {
   if (err.message.includes("Cannot read properties of null (reading 'document')")) {
         return false;
     }
+
+  if (err.message.includes("reading 'sequence'") || err.message.includes("clarity.js")) {
+    return false;
+  }
+
+  return true;
 
 })
 
