@@ -5,6 +5,7 @@ class ReleaseNotePage {
     get filterList() { return cy.get('#product-filter')}
     get resultsContainer() { return cy.get('ul.flex.flex-col.list-none.p-0.m-0', { timeout: 20000 })}
 
+
     setEmailInput(email) {
           cy.intercept('POST', '**/ingest').as('analyticsIngest');
           cy.wait('@analyticsIngest', { timeout: 20000 }).then(() => {

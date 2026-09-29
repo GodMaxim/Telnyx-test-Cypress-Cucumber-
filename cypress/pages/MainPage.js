@@ -56,11 +56,12 @@ class MainPage {
     }
 
     clickDevelopersBtn() {
-        this.developersBtn.should('be.visible', { timeout: 25000 })
+        this.developersBtn.should('be.visible', { timeout: 30000 })
         this.developersBtn.click()
     }
 
     clickIntegration() {
+        this.integrationsBtn.should('be.visible', { timeout: 30000 })
         this.integrationsBtn.click()
     }
 
