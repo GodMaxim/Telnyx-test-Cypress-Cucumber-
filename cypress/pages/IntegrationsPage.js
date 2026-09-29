@@ -4,7 +4,7 @@ class IntegrationsPage {
     get gitHubTitle() { return cy.contains('h1', 'Github')}
 
     setSearchInput(text) {
-        this.searchInput.clear().type(text)
+        this.searchInput.clear().type(text, { delay: 50 })
     }
 
     clickSetUp() {

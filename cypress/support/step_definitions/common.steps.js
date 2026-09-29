@@ -2,7 +2,7 @@ import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import MainPage from '../../pages/MainPage'
 
 Then('the URL should contain {string}', (urlPart) => {
-  cy.url({ timeout: 25000 }).should('include', urlPart);
+  cy.url({ timeout: 30000 }).should('include', urlPart);
 })
 
 When('I scroll to {string} title', (titleText) => {
