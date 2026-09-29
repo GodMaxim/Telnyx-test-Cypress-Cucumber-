@@ -29,7 +29,7 @@ beforeEach(() => {
   cy.visit('/')
 
   cy.get('body').then(($body) => {
-       cy.get('body').find('#onetrust-accept-btn-handler', { timeout: 5000 }).then(($btn) => {
+       cy.get('body').find('#onetrust-accept-btn-handler', { timeout: 20000 }).then(($btn) => {
             if ($btn.length > 0) {
                 cy.wrap($btn).click({ force: true });
             }

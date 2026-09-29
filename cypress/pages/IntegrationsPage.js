@@ -8,7 +8,7 @@ class IntegrationsPage {
     }
 
     clickSetUp() {
-        this.gitHubLink.should('be.visible', { timeout: 25000 })
+        this.gitHubLink.should('be.visible', { timeout: 30000 })
         this.gitHubLink.click()
     }
 

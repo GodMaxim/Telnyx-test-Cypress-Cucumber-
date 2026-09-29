@@ -9,7 +9,7 @@ export default defineConfig({
     baseUrl: 'https://telnyx.com',
     supportFile: 'cypress/support/e2e.js',
     specPattern: 'cypress/e2e/**/*.feature',
-    numTestsKeptInMemory: 50,
+    numTestsKeptInMemory: 10,
     chromeWebSecurity: false,
     viewportWidth: 1366,
     viewportHeight: 768,

@@ -23,5 +23,5 @@ When('I click on {string} link', () => {
 })
 
 Then('the page should contain {string} heading', () => {
-    IntegrationsPage.gitHubTitle.should('be.visible', { timeout: 25000 });
+    IntegrationsPage.gitHubTitle.should('be.visible', { timeout: 30000 });
 });
