@@ -36,7 +36,7 @@ When('I select {string} add-on', (addonName) => {
 });
 
 Then('the estimated cost should contain {string}', (text) => {
-   VoiceAIPage.costTable.should('contain.text', text, { timeout: 35000 });
+   VoiceAIPage.costTable.should('contain.text', text);
 });
 
 Then('the final cost should be {string}', (expectedPrice) => {

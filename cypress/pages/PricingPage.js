@@ -1,7 +1,7 @@
 class PricingPage {
     get ratesTitle() { return cy.contains('h2', 'What\'s on the card.', { timeout: 15000 })}
     get currencyFilter() { return cy.get('#currency-filter')}
-    get euroOption() { return cy.contains('span', 'EUR') }
+    get euroOption() { return cy.contains('span', 'EUR').filter(':visible') }
     get priceColumnCells() { return cy.get('section#pay-as-you-go table td:nth-child(2)')}
     get pricingNumbers () { return cy.get('#communications a[href="/pricing/numbers"]', { timeout: 15000 })}
 

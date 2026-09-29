@@ -10,7 +10,7 @@ class VoiceAIPage {
     get premiumThirdPartyBtn() { return cy.get('#voice-ai-add-on-premium-third-party')}
     get callRecordingBtn() { return cy.get('#voice-ai-add-on-call-recording')}
     get smsFollowUpBtn() { return cy.get('#voice-ai-add-on-sms-follow-up')}
-    get costTable() { return cy.get('dl.flex.flex-col.gap-new-sm')}
+    get costTable() { return cy.get('dl.flex.flex-col.gap-new-sm', { timeout: 35000 })}
     get cost() { return cy.get('span.typography-h2-mobile.md\\:typography-h2.text-black', { timeout: 35000 }) }
 
     switchToFrench() {
