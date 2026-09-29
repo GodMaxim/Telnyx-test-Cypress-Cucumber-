@@ -10,6 +10,7 @@ class PricingPage {
     }
 
     changeCurrency() {
+        this.currencyFilter.should('be.visible', { timeout: 30000 })
         this.currencyFilter.click()
         this.euroOption.should('be.visible', { timeout: 30000 })
         this.euroOption.click()

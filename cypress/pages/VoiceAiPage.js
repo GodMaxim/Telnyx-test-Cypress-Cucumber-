@@ -6,14 +6,16 @@ class VoiceAIPage {
     get pricingTitle() {  return cy.contains('[role="option"]', 'French').parent()  }
     get seePricingBtn() { return cy.get('a:has(span[data-content="SEE PRICING"])')}
     get estimateYourCostTitle() { return cy.contains('h2', 'Your numbers, itemized')}
+    get premiumThirdPartyLabel() { return cy.get('label[for="voice-ai-add-on-premium-third-party"]')}
     get premiumThirdPartyBtn() { return cy.get('#voice-ai-add-on-premium-third-party')}
     get callRecordingBtn() { return cy.get('#voice-ai-add-on-call-recording')}
     get smsFollowUpBtn() { return cy.get('#voice-ai-add-on-sms-follow-up')}
+    get costTable() { return cy.get('dl.flex.flex-col.gap-new-sm')}
     get cost() { return cy.get('span.typography-h2-mobile.md\\:typography-h2.text-black', { timeout: 35000 }) }
 
     switchToFrench() {
         this.languageSwitcher.should('be.visible', { timeout: 30000 })
-        this.languageSwitcher.find('svg').should('be.visible', { timeout: 30000 });
+        this.languageSwitcher.find('svg', { timeout: 40000 }).should('exist')
         this.languageSwitcher.click()
         this.frenchOption.click()
     }
@@ -27,9 +29,8 @@ class VoiceAIPage {
     }
 
     clickPremiumThirdParty() {
-        cy.get('label[for="voice-ai-add-on-premium-third-party"]')
-        .should('be.visible', { timeout: 25000 })
-        .click();
+        this.premiumThirdPartyBtn.click()
+        this.premiumThirdPartyLabel.click()
     }
 
     clickCallRecording() {

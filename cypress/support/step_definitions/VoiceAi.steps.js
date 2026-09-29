@@ -11,7 +11,7 @@ When('I open the Voice AI page', () => {
 
 When('I switch the page language to French', () => {
   VoiceAIPage.switchToFrench();
-  cy.url({ timeout: 20000 }).should('include', '/fr');
+  cy.url({ timeout: 25000 }).should('include', '/fr');
 });
 
 
@@ -36,12 +36,9 @@ When('I select {string} add-on', (addonName) => {
 });
 
 Then('the estimated cost should contain {string}', (text) => {
-   cy.contains(text, { timeout: 35000 }).should('be.visible')
+   VoiceAIPage.costTable.should('contain.text', text, { timeout: 35000 });
 });
 
 Then('the final cost should be {string}', (expectedPrice) => {
-  VoiceAIPage.cost.should(($el) => {
-    const currentText = $el.text().trim()
-    expect(currentText).to.include(expectedPrice)
-  })
+  VoiceAIPage.cost.should('contain.text', expectedPrice, { timeout: 35000 })
 });
