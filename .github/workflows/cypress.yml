@@ -27,7 +27,7 @@ jobs:
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --config-file cypress.config.ci.js --browser chrome --reporter mochawesome --reporter-options "reportDir=cypress/results,overwrite=false,html=false,json=true"
+          command: npx cypress run --config-file cypress.config.ci.js --browser chrome
         continue-on-error: true
 
       - name: Merge Mochawesome Reports
@@ -39,12 +39,12 @@ jobs:
       - name: Generate HTML report
         if: always()
         run: |
-         npx mochawesome-report-generator cypress/report.json -o cypress/results/html
+         npx mochawesome-report-generator cypress/results/cucumber-report.json -o cypress/results/html
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: cypress/results/html 
+          path: cypress/results/html
 
   deploy:
     runs-on: ubuntu-latest
