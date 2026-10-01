@@ -33,7 +33,7 @@ jobs:
       - name: Generate HTML report
         if: always()
         run: |
-          node generate-report.js
+          npx mchr --jsonDir cypress/results --reportPath cypress/results/html
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
