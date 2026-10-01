@@ -2,7 +2,8 @@
    "name": "telnyx-cypress-cucumber",
    "version": "1.0.0",
    "scripts": {
-      "test": "npx cypress run"
+      "test": "npx cypress run",
+      "report:cucumber": "node generate-report.js"
    },
    "cypress-cucumber-preprocessor": {
       "stepDefinitions": [
@@ -19,6 +20,7 @@
       "cypress": "^16.1.0",
       "mochawesome": "^8.1.1",
       "mochawesome-merge": "^5.1.1",
-      "mochawesome-report-generator": "^6.3.2"
+      "mochawesome-report-generator": "^6.3.2",
+      "multiple-cucumber-html-reporter": "^4.3.0"
    }
 }
