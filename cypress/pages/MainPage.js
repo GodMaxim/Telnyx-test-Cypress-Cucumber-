@@ -5,8 +5,8 @@ class MainPage {
     get averageMinsPerConversation() { return cy.get('#workload-minutes')}
     get smsPerConversation() { return cy.get('#workload-smsFollowUps')}
     get footer() { return cy.get('#site-footer')}
-    get voiceAiLink() { return cy.get('a[href="/products/voice-ai-agents"]').filter(':visible') }
-    get productsBtn () { return cy.contains('button', 'Products')}
+    get voiceAiLink() { return cy.get('a[href="/products/voice-ai-agents"]', ).filter(':visible') }
+    get productsBtn () { return cy.contains('button', 'Products', { timeout: 30000 })}
     getNavElement(itemName) { return cy.get('#site-header').contains('a[href="/products"]', itemName)}
     get globalCommunicationLink() { return cy.get('#site-footer nav[aria-label="Company footer"] a[href="/global-coverage"]')}
     get logInLink() { return cy.get('#site-header a[href="https://portal.telnyx.com"]:visible', { timeout: 30000 })}

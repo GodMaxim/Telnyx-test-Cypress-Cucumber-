@@ -1,11 +1,13 @@
+import { hydrated } from '../support/e2e'
+
 class VoiceAIPage {
     get VoiceApiTitle() { return cy.contains('h1', 'Voice AI Agents', { timeout: 25000 })}
     get languageSwitcher() {  return cy.get('div.language-switcher-overlay button[aria-label="Select language"]', { timeout: 30000 })}
     get frenchOption() {  return cy.contains('span', 'French')}
     get seePricingBtn() { return cy.get('a:has(span[data-content="SEE PRICING"])')}
-    get estimateYourCostTitle() { return cy.contains('h2', 'Your numbers, itemized')}
     get premiumThirdPartyLabel() { return cy.get('label[for="voice-ai-add-on-premium-third-party"]')}
     get premiumThirdPartyBtn() { return cy.get('#voice-ai-add-on-premium-third-party')}
+    get costTitle() { return cy.contains('h2', 'Your numbers, itemized')}
     get callRecordingBtn() { return cy.get('#voice-ai-add-on-call-recording')}
     get smsFollowUpBtn() { return cy.get('#voice-ai-add-on-sms-follow-up')}
     get costTable() { return cy.get('dl.flex.flex-col.gap-new-sm', { timeout: 35000 }).filter(':visible').first()}
@@ -27,8 +29,10 @@ class VoiceAIPage {
     }
 
     clickPremiumThirdParty() {
-        this.premiumThirdPartyBtn.click()
-        this.premiumThirdPartyLabel.click()
+        this.premiumThirdPartyBtn
+        .should('be.visible')
+        .should(hydrated)
+        .click()
     }
 
     clickCallRecording() {

@@ -30,14 +30,14 @@ Cypress.on('uncaught:exception', (err, runnable) => {
   return true;
 })
 
+export const hydrated = ($el) => {
+    const key = Object.keys($el[0]).find((k) => k.startsWith('__reactProps$'))
+    expect(key, 'element is hydrated').to.exist
+}
+
 beforeEach(() => {
+  cy.setCookie('OptanonAlertBoxClosed', '2026-01-01T00:00:00.000Z');
+  cy.setCookie('OptanonConsent', 'isIABGlobal=false&datestamp=Thu+Jan+01+2026+00%3A00%3A00+GMT%2C+version=6.3.0&consentId=11111111-2222-3333-4444-555555555555&interactionCount=1');
   cy.visit('/')
 
-  cy.get('body').then(($body) => {
-       cy.get('body').find('#onetrust-accept-btn-handler', { timeout: 20000 }).then(($btn) => {
-            if ($btn.length > 0) {
-                cy.wrap($btn).click({ force: true });
-            }
-       })
-  })
 })

@@ -30,8 +30,10 @@ jobs:
           command: npx cypress run --config-file cypress.config.ci.js --browser chrome
         continue-on-error: true
 
-      - name: Merge reports
-        run: npx mochawesome-merge cypress/results/*.json > cypress/results/report.json
+      - name: Merge Mochawesome Reports
+        run: |
+         mkdir -p cypress/results
+         npx mochawesome-merge cypress/results/*.json > cypress/results/report.json
 
       - name: Generate HTML report
         run: npx marge cypress/results/report.json -o cypress/reports/html --inline
