@@ -22,11 +22,11 @@ When('I select country {string}', (country) => {
 });
 
 Then('the prices should be displayed in Ukrainian Hryvnia', () => {
-    cy.get('.price', { timeout: 15000 })
+    ShopPage.priceElements
     .should('be.visible')
     .and('contain', '₴')
 });
 
 After(() => {
-    cy.visit('/')
+    MainPage.goToMainPage()
 });

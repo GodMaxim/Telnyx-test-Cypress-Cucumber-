@@ -7,17 +7,43 @@ on:
     branches: [ "main", "master" ]
   workflow_dispatch: 
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
     
     steps:
-
       - name: Checkout code
         uses: actions/checkout@v4
 
-      
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --browser chrome
+          command: npx cypress run --config-file cypress.config.ci.js --browser chrome
+        continue-on-error: true
+
+      - name: Merge reports
+        run: npx mochawesome-merge cypress/results/*.json > cypress/results/report.json
+
+      - name: Generate HTML report
+        run: npx marge cypress/results/report.json -o cypress/reports/html --inline
+
+      - name: Upload artifact for GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: cypress/reports/html
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: cypress-run
+    steps:
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4

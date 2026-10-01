@@ -9,7 +9,7 @@ End-to-End (E2E) test automation framework for the **Telnyx** application, built
 * **Test Runner:** [Cypress](https://www.cypress.io/) (^16.1.0)
 * **BDD Framework:** [@badeball/cypress-cucumber-preprocessor](https://github.com/badeball/cypress-cucumber-preprocessor) (^28.0.0)
 * **Bundler:** [ESBuild](https://github.com/bahmutov/cypress-esbuild-preprocessor)
-* **Selectors:** Native Cypress selectors + [Cypress XPath](https://github.com/cypress-io/cypress-xpath)
+* **Selectors:** Native Cypress selectors
 * **CI/CD:** GitHub Actions
 
 ---
@@ -34,6 +34,7 @@ telnyx-cypress-cucumber/
 │   │   ├── step_definitions/ # Step implementation files
 │   │   └── e2e.js            # Global setup and exception handlers
 │   └── screenshots/          # Test failure screenshots
+├── cypress.config.ci.js      # Cypress configuration file for CI
 ├── cypress.config.js         # Cypress configuration file
 ├── package.json              # Project dependencies and scripts
 └── README.md

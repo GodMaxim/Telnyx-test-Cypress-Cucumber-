@@ -11,7 +11,7 @@ When('I click on {string} option', () => {
  })
 
 When('I click on {string} input field', (placeholder) => {
-    cy.get(`input[placeholder="${placeholder}"]`, { timeout: 25000 }).click();
+    IntegrationsPage.clickOnInputField(placeholder)
 });
 
 When('I search integration for {string}', (text) => {
@@ -23,5 +23,5 @@ When('I click on {string} link', () => {
 })
 
 Then('the page should contain {string} heading', () => {
-    IntegrationsPage.gitHubTitle.should('be.visible', { timeout: 30000 });
+    IntegrationsPage.gitHubTitle.should('be.visible');
 });

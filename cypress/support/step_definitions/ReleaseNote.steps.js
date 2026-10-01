@@ -7,8 +7,9 @@ When('I open the {string} page', () => {
   cy.url({timeout: 20000}).should('include', 'release-notes');
 });
 
-When('I enter email {string} into the email field', (email) => {
-  ReleaseNotePage.setEmailInput(email);
+When('I enter a unique email into the email field', () => {
+  const uniqueEmail = `telnyx_test_${Date.now()}@gmail.com`;
+    ReleaseNotePage.setEmailInput(uniqueEmail);
 });
 
 When('I click on the Subscribe button', () => {
@@ -16,7 +17,7 @@ When('I click on the Subscribe button', () => {
 });
 
 Then('I should see the success icon', () => {
-  ReleaseNotePage.successIcon.should('be.visible', { timeout: 10000 });
+  ReleaseNotePage.successIcon.should('be.visible')
 });
 
 When('I choose {string} from the product filter', (optionName) => {

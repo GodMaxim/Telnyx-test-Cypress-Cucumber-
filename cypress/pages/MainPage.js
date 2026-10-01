@@ -1,5 +1,4 @@
 class MainPage {
-    get signUpBtn() {  return cy.get('a[href="/sign-up"] span[data-content="Start building"]') }
     get price () { return cy.contains('dt', 'Telnyx per month').next('dd')}
     get worloadSection() { return cy.contains('h2', 'Price your Voice AI workload') }
     get conversationsPerMinutes() { return cy.get('#workload-conversations')}
@@ -10,18 +9,14 @@ class MainPage {
     get productsBtn () { return cy.contains('button', 'Products')}
     getNavElement(itemName) { return cy.get('#site-header').contains('a[href="/products"]', itemName)}
     get globalCommunicationLink() { return cy.get('#site-footer nav[aria-label="Company footer"] a[href="/global-coverage"]')}
-    get logInLink() { return cy.get('#site-header a[href="https://portal.telnyx.com"]:visible')}
-    get developersBtn() { return cy.contains('span', 'Developers')}
-    get integrationsBtn () { return cy.get('#site-header a[href="/integrations"]:visible')}
+    get logInLink() { return cy.get('#site-header a[href="https://portal.telnyx.com"]:visible', { timeout: 30000 })}
+    get developersBtn() { return cy.contains('span', 'Developers', { timeout: 30000 })}
+    get integrationsBtn () { return cy.get('#site-header a[href="/integrations"]:visible', { timeout: 30000 })}
     get pricingBtn () { return cy.contains('button', 'Pricing')}
-    get pricingLink() { return cy.get('#site-header a[href="/pricing"]:visible')}
+    get pricingLink() { return cy.get('#site-header a[href="/pricing"]:visible', { timeout: 30000 })}
     get linkedInLink() { return cy.get('a[href="https://www.linkedin.com/company/telnyx"]')}
     get xLink() { return cy.get('a[href="https://x.com/telnyx"]')}
     get facebookLink() { return cy.get('a[href="https://www.facebook.com/Telnyx/"]')}
-
-    clickSignUp() {
-        this.signUpBtn.click()
-    }
 
     setConvesationsPerMinute(value) {
         this.conversationsPerMinutes.clear().type(value)
@@ -56,12 +51,12 @@ class MainPage {
     }
 
     clickDevelopersBtn() {
-        this.developersBtn.should('be.visible', { timeout: 30000 })
+        this.developersBtn.should('be.visible')
         this.developersBtn.click()
     }
 
     clickIntegration() {
-        this.integrationsBtn.should('be.visible', { timeout: 30000 })
+        this.integrationsBtn.should('be.visible')
         this.integrationsBtn.click()
     }
 
@@ -70,9 +65,19 @@ class MainPage {
     }
 
     clickPricingLik() {
-        this.pricingLink.should('be.visible', { timeout: 25000 })
+        this.pricingLink.should('be.visible')
         this.pricingLink.click()
     }
 
+    goToMainPage() {
+        cy.visit('/')
+    }
+
+    verifyPriceChanged(oldPrice) {
+        this.price.invoke('text').should((newPrice) => {
+        expect(newPrice).to.not.equal(oldPrice);
+        expect(newPrice).to.include('$');
+    })
+}
 }
 export default new MainPage()

@@ -20,9 +20,9 @@ When('I confirm resend verification email by entering email {string} again', (em
 })
 
 Then('I should see the success message', () => {
-    LogInPage.successMessage.should('be.visible', { timeout: 30000 });
+    LogInPage.successMessage.should('be.visible')
 });
 
 Then('the error message {string} should be displayed', () => {
-    LogInPage.errorMessage.should('be.visible', { timeout: 25000 });
+    LogInPage.errorMessage.should('be.visible');
 })

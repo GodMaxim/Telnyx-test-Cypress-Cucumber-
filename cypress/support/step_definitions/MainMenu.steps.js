@@ -10,6 +10,10 @@ Then('the monthly price should be {string}', (expectedPrice) => {
 });
 
 When('I set {string} to {string}', (fieldName, value) => {
+  MainPage.price.invoke('text').then((text) => {
+        previousPrice = text;
+    });
+
   switch (fieldName) {
     case 'Conversations per month':
       MainPage.setConvesationsPerMinute(value);
@@ -23,4 +27,9 @@ When('I set {string} to {string}', (fieldName, value) => {
     default:
       throw new Error(`Unknown field: ${fieldName}`);
   }
+  
+  Then('the monthly price should change', () => {
+    MainPage.verifyPriceChanged(previousPrice);
+  })
+
 });

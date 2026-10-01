@@ -6,6 +6,6 @@ Then('I should be redirected to {string}', (url) => {
 });
 
 Then('I should see {string} title', (titleText) => {
-  SignUpPage.createAccountTitle.should('be.visible', { timeout: 15000 });
+  SignUpPage.createAccountTitle.should('be.visible');
   SignUpPage.createAccountTitle.should('contain.text', titleText);
 });

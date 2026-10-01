@@ -6,5 +6,5 @@ When('I search for number {string}', (country) => {
 });
 
 Then('{string} should be displayed in the results', (countryName) => {
-    CommunicationPage.verifyCountryIsDisplayed(countryName);
+    CommunicationPage.getCountryElement(countryName).should('be.visible')
 });
