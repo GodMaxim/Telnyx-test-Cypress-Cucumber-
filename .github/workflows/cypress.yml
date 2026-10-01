@@ -31,17 +31,20 @@ jobs:
         continue-on-error: true
 
       - name: Merge Mochawesome Reports
+        if: always()
         run: |
          mkdir -p cypress/results
          npx mochawesome-merge "cypress/results/*.json" > cypress/report.json
 
       - name: Generate HTML report
-        run: npx marge cypress/results/report.json -o cypress/reports/html --inline
+        if: always()
+        run: |
+         npx mochawesome-report-generator cypress/report.json -o cypress/results/html
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: cypress/reports/html
+          path: cypress/results/html 
 
   deploy:
     runs-on: ubuntu-latest
