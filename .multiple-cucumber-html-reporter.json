@@ -1,0 +1,22 @@
+{
+  "jsonDir": "cypress/results",
+  "reportPath": "cypress/results/html",
+  "metadata": {
+    "browser": {
+      "name": "chrome",
+      "version": "latest"
+    },
+    "device": "GitHub Actions",
+    "platform": {
+      "name": "ubuntu",
+      "version": "latest"
+    }
+  },
+  "customData": {
+    "title": "Run info",
+    "data": [
+      { "label": "Project", "value": "Telnyx E2E Tests" },
+      { "label": "Release", "value": "1.0.0" }
+    ]
+  }
+}
