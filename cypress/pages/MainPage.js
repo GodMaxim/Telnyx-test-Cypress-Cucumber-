@@ -1,7 +1,7 @@
 class MainPage {
     get price () { return cy.contains('dt', 'Telnyx per month').next('dd')}
-    get worloadSection() { return cy.contains('h2', 'Price your Voice AI workload') }
-    get conversationsPerMinutes() { return cy.get('#workload-conversations')}
+    get workloadSection() { return cy.contains('h2', 'Price your Voice AI workload',  { timeout: 30000 }) }
+    get conversationsPerMinutes() { return cy.get('#workload-conversations', { timeout: 30000 })}
     get averageMinsPerConversation() { return cy.get('#workload-minutes')}
     get smsPerConversation() { return cy.get('#workload-smsFollowUps')}
     get footer() { return cy.get('#site-footer')}
@@ -18,7 +18,14 @@ class MainPage {
     get xLink() { return cy.get('a[href="https://x.com/telnyx"]')}
     get facebookLink() { return cy.get('a[href="https://www.facebook.com/Telnyx/"]')}
 
+    scrollToTitle() { 
+        this.workloadSection.scrollIntoView()
+        this.workloadSection.should('be.visible')
+    }
+
     setConvesationsPerMinute(value) {
+        this.conversationsPerMinutes.should('be.visible')
+        this.conversationsPerMinutes.should('not.be.disabled')
         this.conversationsPerMinutes.clear().type(value)
     }
 

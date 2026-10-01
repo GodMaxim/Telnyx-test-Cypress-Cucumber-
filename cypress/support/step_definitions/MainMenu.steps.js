@@ -2,7 +2,7 @@ import { When, Then } from '@badeball/cypress-cucumber-preprocessor';
 import MainPage from '../../pages/MainPage';
 
 When('I scroll to {string} section', () => {
-  MainPage.worloadSection.scrollIntoView();
+  MainPage.scrollToTitle()
 })
 
 Then('the monthly price should be {string}', (expectedPrice) => {

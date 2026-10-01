@@ -33,7 +33,7 @@ jobs:
       - name: Merge Mochawesome Reports
         run: |
          mkdir -p cypress/results
-         npx mochawesome-merge cypress/results/*.json > cypress/results/report.json
+         npx mochawesome-merge "cypress/results/*.json" > cypress/report.json
 
       - name: Generate HTML report
         run: npx marge cypress/results/report.json -o cypress/reports/html --inline
