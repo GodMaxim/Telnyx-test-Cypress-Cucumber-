@@ -30,16 +30,10 @@ jobs:
           command: npx cypress run --config-file cypress.config.ci.js --browser chrome
         continue-on-error: true
 
-      - name: Merge Mochawesome Reports
-        if: always()
-        run: |
-         mkdir -p cypress/results
-         npx mochawesome-merge "cypress/results/*.json" > cypress/report.json
-
       - name: Generate HTML report
         if: always()
         run: |
-         npx mochawesome-report-generator cypress/results/cucumber-report.json -o cypress/results/html
+          npx mochawesome-report-generator cypress/results/cucumber-report.json -o cypress/results/html
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
