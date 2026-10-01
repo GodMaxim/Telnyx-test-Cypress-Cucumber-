@@ -27,7 +27,7 @@ jobs:
       - name: Run Cypress Tests
         uses: cypress-io/github-action@v6
         with:
-          command: npx cypress run --config-file cypress.config.ci.js --browser chrome
+          command: npx cypress run --config-file cypress.config.ci.js --browser chrome --reporter mochawesome --reporter-options "reportDir=cypress/results,overwrite=false,html=false,json=true"
         continue-on-error: true
 
       - name: Merge Mochawesome Reports
